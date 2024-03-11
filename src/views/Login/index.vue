@@ -1,20 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import { mobileRules, passwordRules } from '@/utils/rules'
-import { showToast } from 'vant'
-
-const mobile = ref('')
-const password = ref('')
-const agree = ref(false)
-
-const onSubmit = () => {
-  // 手机号和密码验证成功后点击登录按钮触发
-  // 在这里验证是否勾选了已经同意协议
-  if (!agree.value) return showToast('请勾选协议')
-  // TODO 进行登录
-}
-</script>
-
 <template>
   <div class="login-page">
     <cp-nav-bar
@@ -69,6 +52,35 @@ const onSubmit = () => {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { mobileRules, passwordRules } from '@/utils/rules'
+import { showToast, showSuccessToast } from 'vant'
+import { loginByPassword } from '@/services/user'
+import { useUserStore } from '@/stores'
+import { useRouter, useRoute } from 'vue-router'
+
+const mobile = ref('')
+const password = ref('')
+const agree = ref(false)
+
+const store = useUserStore()
+const router = useRouter()
+const route = useRoute()
+const onSubmit = async () => {
+  // 手机号和密码验证成功后点击登录按钮触发
+  // 在这里验证是否勾选了已经同意协议
+  if (!agree.value) return showToast('请勾选协议')
+  // TODO 进行登录
+  const res = await loginByPassword(mobile.value, password.value)
+  store.setUser(res.data) // 存储用户信息
+  console.log('route.query.returnUrl', route.query.returnUrl)
+  // 如果有回跳地址就进行回跳，没有跳转到个人中心
+  router.push((route.query.returnUrl as string) || '/user')
+  showSuccessToast('登录成功')
+}
+</script>
 
 <style lang="scss" scoped>
 .login {
@@ -127,3 +139,5 @@ const onSubmit = () => {
   }
 }
 </style>
+, showSuccessToastimport type { useRouter } from 'vue-router' import type {
+useRoute } from 'vue-router'
