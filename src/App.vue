@@ -16,6 +16,7 @@
     >
     <Button type="primary" @click="store.delUser()">退出</Button>
     <Button type="primary" @click="getUser">获取用户信息</Button>
+    <Button type="primary" @click="login">接口登录</Button>
   </div>
 </template>
 
@@ -32,6 +33,25 @@ const getUser = () => {
     method: 'get'
   })
 }
+
+const login = () => {
+  axios
+    .request({
+      url: 'login/password',
+      method: 'post',
+      data: {
+        mobile: '13211112222',
+        password: 'abc12345'
+      }
+    })
+    .then((res) => {
+      console.log('登录成功', res)
+    })
+    .catch((err) => {
+      console.log('失败', err)
+    })
+}
 </script>
 
 <style scoped lang="scss"></style>
+import type axios from 'node_modules/axios/index.cjs';
