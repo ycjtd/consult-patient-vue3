@@ -1,24 +1,27 @@
-<script setup lang="ts">
-import { Button } from 'vant'
-</script>
-
 <template>
   <div>
-    <h1>Hello World!</h1>
-    <Button type="primary">点我提交</Button>
-    <div class="main">main</div>
-    <div class="footer">footer</div>
+    <h1>{{ store.user }}</h1>
+    <Button
+      type="primary"
+      @click="
+        store.setUser({
+          id: '1',
+          avatar: '1',
+          token: '1',
+          mobile: '1',
+          account: '1'
+        })
+      "
+      >登录</Button
+    >
+    <Button type="primary" @click="store.delUser()">退出</Button>
   </div>
 </template>
 
-<style scoped lang="scss">
-.main {
-  color: var(--cp-primary);
-  background-color: var(--footer-color);
-}
+<script setup lang="ts">
+import { Button } from 'vant'
+import { useUserStore } from './stores/user'
+const store = useUserStore()
+</script>
 
-.footer {
-  color: var(--main-color);
-  background-color: var(--footer-color);
-}
-</style>
+<style scoped lang="scss"></style>

@@ -28,3 +28,11 @@
   ```
 - 使用
   color: var(--main-color);
+
+
+用户仓库和持久化
+- 设置用户信息类型(参考后端返回的字段)
+- 实现仓库,用户状态,设置用户,删除用户
+- 进行测试
+- 持久化
+  pnpm i pinia-plugin-persistedstate
