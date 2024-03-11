@@ -20,8 +20,9 @@
 
 <script setup lang="ts">
 import { Button } from 'vant'
-import { useUserStore } from './stores/user'
+import { useUserStore } from './stores'
 const store = useUserStore()
 </script>
 
 <style scoped lang="scss"></style>
+./stores/moduls/user./stores/modules

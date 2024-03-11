@@ -36,3 +36,11 @@
 - 进行测试
 - 持久化
   pnpm i pinia-plugin-persistedstate
+
+仓库统一管理
+- pinia独立维护
+  初始化代码在main.ts中,仓库代码在stores中,代码分散职能不单一
+  优化:由stores统一维护,在stores/index.ts中完成pinia初始化,交付main.ts使用
+- 仓库统一导出
+  使用一个仓库 import { useUserStore } from './stores/user' 不同仓库路径不一致
+  优化:由stores/index.ts 统一导出,导入路径统一 `./stores`,而且维护仓库在stores/modules中
