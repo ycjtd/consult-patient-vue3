@@ -13,3 +13,18 @@
   }
   }
   ```
+
+自定义主题
+- 在main.scss中
+  ```
+    // 全局css变量 使用场景:项目主题
+    :root {
+      --main-color: red;
+    }
+    //局部css变量 使用场景:组件变量
+    .footer {
+      --footer-color: green;
+    }
+  ```
+- 使用
+  color: var(--main-color);

@@ -5,8 +5,20 @@ import { Button } from 'vant'
 <template>
   <div>
     <h1>Hello World!</h1>
-    <Button type="warning">点我提交</Button>
+    <Button type="primary">点我提交</Button>
+    <div class="main">main</div>
+    <div class="footer">footer</div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.main {
+  color: var(--cp-primary);
+  background-color: var(--footer-color);
+}
+
+.footer {
+  color: var(--main-color);
+  background-color: var(--footer-color);
+}
+</style>
