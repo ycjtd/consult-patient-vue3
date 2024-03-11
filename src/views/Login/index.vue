@@ -6,11 +6,8 @@
 
 <script setup lang="ts">
 const fn = () => {
-  console.log('触发了');
+  console.log('触发了')
 }
 </script>
 
-<style scoped lang="scss">
-.login {
-}
-</style>
+<style scoped lang="scss"></style>
