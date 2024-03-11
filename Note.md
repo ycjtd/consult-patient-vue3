@@ -62,3 +62,12 @@
 - 创建登录组件
 - 配置路由
 - 设置路由出口  App.vue
+
+组件自动注册
+使用Vant组件比较麻烦，需要先导入组件才可使用
+如何实现？
+安装组件:pnpm add unplugin-vue-components -D
+配置 vite.config.ts
+优化点：
+- 解决类型声明文件重复
+- 解决样式引入重复
