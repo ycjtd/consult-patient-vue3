@@ -10,7 +10,12 @@ const router = createRouter({
   // import.meta JavaScript模块暴露的描述模块的信息对象
   // env.BASE_URL 是Vite环境变量
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: []
+  routes: [
+    {
+      path: '/login',
+      component: () => import('@/views/Login/index.vue')
+    }
+  ]
 })
 
 export default router

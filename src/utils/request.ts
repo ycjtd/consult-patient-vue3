@@ -52,16 +52,33 @@ instance.interceptors.response.use(
 
 export default instance
 
-export const request = (
+// export const request = (
+//   url: string,
+//   method: Method = 'GET',
+//   submitData?: object
+// ) => {
+//   // 参数:地址 请求方式 提交的数据
+//   // 返回:promise
+//   return instance.request({
+//     url,
+//     method,
+//     [method.toUpperCase() === 'GET' ? 'params' : 'data']: submitData
+//   })
+// }
+type Data<T> = {
+  code: number
+  message: string
+  data: T
+}
+// 4. 请求工具函数
+export const request = <T>(
   url: string,
-  method: Method = 'GET',
+  method: Method = 'get',
   submitData?: object
 ) => {
-  // 参数:地址 请求方式 提交的数据
-  // 返回:promise
-  return instance.request({
+  return instance.request<T, Data<T>>({
     url,
     method,
-    [method.toUpperCase() === 'GET' ? 'params' : 'data']: submitData
+    [method.toLowerCase() === 'get' ? 'params' : 'data']: submitData
   })
 }
