@@ -76,7 +76,7 @@
 import { ref, onUnmounted } from 'vue'
 import { mobileRules, passwordRules, codeRules } from '@/utils/rules'
 import { showToast, showSuccessToast } from 'vant'
-import { loginByPassword, sendMobileCode } from '@/services/user'
+import { loginByPassword, sendMobileCode, loginByMobile } from '@/services/user'
 import { useUserStore } from '@/stores'
 import { useRouter, useRoute } from 'vue-router'
 
@@ -91,8 +91,10 @@ const onSubmit = async () => {
   // 手机号和密码验证成功后点击登录按钮触发
   // 在这里验证是否勾选了已经同意协议
   if (!agree.value) return showToast('请勾选协议')
-  //  进行登录
-  const res = await loginByPassword(mobile.value, password.value)
+  //  进行登录(合并短信登录)
+  const res = isPass.value
+    ? await loginByPassword(mobile.value, password.value)
+    : await loginByMobile(mobile.value, code.value)
   store.setUser(res.data) // 存储用户信息
   console.log('route.query.returnUrl', route.query.returnUrl)
   // 如果有回跳地址就进行回跳，没有跳转到个人中心
