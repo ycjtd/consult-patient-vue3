@@ -1,5 +1,11 @@
 import { useUserStore } from '@/stores'
 import { createRouter, createWebHistory } from 'vue-router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+NProgress.configure({
+  showSpinner: false
+})
 
 // 如何得到路由实例 createRouter()
 // 如何设置路由模式 history
@@ -49,6 +55,7 @@ const router = createRouter({
 
 // 导航守卫
 router.beforeEach((to) => {
+  NProgress.start()
   const store = useUserStore()
   // 白名单
   const whiteList = ['/login']
@@ -59,5 +66,6 @@ router.beforeEach((to) => {
 // 后置守卫
 router.afterEach((to) => {
   document.title = `${to.meta.title || ''}-优医问诊`
+  NProgress.done()
 })
 export default router

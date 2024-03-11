@@ -34,6 +34,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.11.10
     version: 20.11.25
+  '@types/nprogress':
+    specifier: ^0.2.3
+    version: 0.2.3
   '@vitejs/plugin-vue':
     specifier: ^5.0.3
     version: 5.0.4(vite@5.1.5)(vue@3.4.21)
@@ -55,6 +58,9 @@ devDependencies:
   npm-run-all2:
     specifier: ^6.1.1
     version: 6.1.2
+  nprogress:
+    specifier: ^0.2.0
+    version: 0.2.0
   postcss-px-to-viewport:
     specifier: ^1.1.1
     version: 1.1.1
@@ -558,6 +564,10 @@ packages:
     resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
     dependencies:
       undici-types: 5.26.5
+    dev: true
+
+  /@types/nprogress@0.2.3:
+    resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
     dev: true
 
   /@types/semver@7.5.8:
@@ -2323,6 +2333,10 @@ packages:
       pidtree: 0.6.0
       read-package-json-fast: 3.0.2
       shell-quote: 1.8.1
+    dev: true
+
+  /nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
     dev: true
 
   /nth-check@2.1.1:
