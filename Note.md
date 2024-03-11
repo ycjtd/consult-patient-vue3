@@ -116,3 +116,10 @@ CpNavBar封装
 - 短信登录
   短信登录API
   合并短信登录
+
+图标组件-打包svg地图
+图片格式是png的：合成精灵图，根据定位使用
+图片格式是svg的：是xml格式，打包成svg地图，通过ID使用，一次加载，动态使用图片无需import
+安装插件 pnpm install vite-plugin-svg-icons -D
+配置vite.config.ts
+

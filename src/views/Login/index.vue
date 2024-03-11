@@ -62,6 +62,7 @@
         <a href="javascript:;">忘记密码？</a>
       </div>
     </van-form>
+
     <!-- 底部 -->
     <div class="login-other">
       <van-divider>第三方登录</van-divider>
