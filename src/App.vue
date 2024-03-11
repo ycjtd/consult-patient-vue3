@@ -15,14 +15,23 @@
       >登录</Button
     >
     <Button type="primary" @click="store.delUser()">退出</Button>
+    <Button type="primary" @click="getUser">获取用户信息</Button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Button } from 'vant'
 import { useUserStore } from './stores'
+import axios from './utils/request'
+
 const store = useUserStore()
+
+const getUser = () => {
+  axios.request({
+    url: 'patient/myUser',
+    method: 'get'
+  })
+}
 </script>
 
 <style scoped lang="scss"></style>
-./stores/moduls/user./stores/modules

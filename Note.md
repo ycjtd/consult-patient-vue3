@@ -44,3 +44,12 @@
 - 仓库统一导出
   使用一个仓库 import { useUserStore } from './stores/user' 不同仓库路径不一致
   优化:由stores/index.ts 统一导出,导入路径统一 `./stores`,而且维护仓库在stores/modules中
+
+请求工具-axios配置  文件 utils/request.ts
+- axios配置
+  创建axios实例  基准地址,超时时间
+  请求拦截器 携带token
+  响应拦截器 业务失败处理,摘取核心响应数据,401处理
+- 请求函数
+  函数封装 简化传参逻辑
+  添加类型 设置响应数据类型
