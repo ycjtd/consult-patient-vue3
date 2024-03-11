@@ -1,4 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+import { mobileRules, passwordRules } from '@/utils/rules'
+import { showToast } from 'vant'
+
+const mobile = ref('')
+const password = ref('')
+const agree = ref(false)
+
+const onSubmit = () => {
+  // 手机号和密码验证成功后点击登录按钮触发
+  // 在这里验证是否勾选了已经同意协议
+  if (!agree.value) return showToast('请勾选协议')
+  // TODO 进行登录
+}
+</script>
 
 <template>
   <div class="login-page">
@@ -15,11 +30,21 @@
       </a>
     </div>
     <!-- 表单 -->
-    <van-form autocomplete="off">
-      <van-field placeholder="请输入手机号" type="tel"></van-field>
-      <van-field placeholder="请输入密码" type="password"></van-field>
+    <van-form autocomplete="off" @submit="onSubmit">
+      <van-field
+        placeholder="请输入手机号"
+        type="tel"
+        v-model="mobile"
+        :rules="mobileRules"
+      ></van-field>
+      <van-field
+        placeholder="请输入密码"
+        type="password"
+        v-model="password"
+        :rules="passwordRules"
+      ></van-field>
       <div class="cp-cell">
-        <van-checkbox>
+        <van-checkbox v-model="agree">
           <span>我已同意</span>
           <a href="javascript:;">用户协议</a>
           <span>及</span>
@@ -27,7 +52,9 @@
         </van-checkbox>
       </div>
       <div class="cp-cell">
-        <van-button block round type="primary">登 录</van-button>
+        <van-button block round type="primary" native-type="submit"
+          >登 录</van-button
+        >
       </div>
       <div class="cp-cell">
         <a href="javascript:;">忘记密码？</a>
