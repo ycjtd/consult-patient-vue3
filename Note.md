@@ -123,3 +123,4 @@ CpNavBar封装
 安装插件 pnpm install vite-plugin-svg-icons -D
 配置vite.config.ts
 
+使用svg实现登录输入密码是否可见

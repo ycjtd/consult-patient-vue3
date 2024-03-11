@@ -26,10 +26,18 @@
       <van-field
         v-if="isPass"
         placeholder="请输入密码"
-        type="password"
+        :type="isShow ? 'text' : 'password'"
         v-model="password"
         :rules="passwordRules"
-      ></van-field>
+      >
+        <template #button>
+          <cp-icon
+            :name="`login-eye-${isShow ? 'on' : 'off'}`"
+            style="margin-right: 10px"
+            @click="isShow = !isShow"
+          ></cp-icon>
+        </template>
+      </van-field>
       <van-field
         v-else
         placeholder="短信验证码"
@@ -62,7 +70,6 @@
         <a href="javascript:;">忘记密码？</a>
       </div>
     </van-form>
-
     <!-- 底部 -->
     <div class="login-other">
       <van-divider>第三方登录</van-divider>
@@ -130,6 +137,9 @@ const onSend = async () => {
 onUnmounted(() => {
   clearInterval(timer)
 })
+
+// 密码的可见与不可见
+const isShow = ref(false)
 </script>
 
 <style lang="scss" scoped>
