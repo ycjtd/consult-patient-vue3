@@ -124,3 +124,9 @@ CpNavBar封装
 配置vite.config.ts
 
 使用svg实现登录输入密码是否可见
+
+Tabbar组件
+- tabbar组件
+- 支持路由切换
+- 自定义图标
+- 图标切换

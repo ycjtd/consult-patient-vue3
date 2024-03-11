@@ -33,7 +33,7 @@ const router = createRouter({
           component: () => import('@/views/Notify/index.vue')
         },
         {
-          path: '/User',
+          path: '/user',
           component: () => import('@/views/User/index.vue')
         }
       ]
