@@ -5,13 +5,14 @@
       left-arrow
       :title="title"
       :right-text="rightText"
+      @click-left="onClickLeft"
       @click-right="onClickRight"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import {defineProps} from 'vue'
+import { useRouter } from 'vue-router'
 // 1.通过props实现标题和右侧文字的设置
 defineProps<{
   title?: string
@@ -24,6 +25,16 @@ const emit = defineEmits<{
 }>()
 const onClickRight = () => {
   emit('click-right')
+}
+
+const router = useRouter()
+// 3.回退，监听箭头的点击事件按条件进行跳转
+const onClickLeft = () => {
+  if(history.state?.back){
+    router.back()
+  }else {
+    router.push('/')
+  }
 }
 </script>
 
@@ -39,4 +50,7 @@ const onClickRight = () => {
     }
   }
 }
-</style>
+</style>import type { useRouter } from 'vue-router';
+import type { useRouter } from 'vue-router';
+import type { useRouter } from 'vue-router';
+
