@@ -6,9 +6,11 @@
     ></cp-nav-bar>
     <!-- 头部 -->
     <div class="login-head">
-      <h3>密码登录</h3>
+      <h3>{{ isPass ? '密码登录' : '短信验证码登录' }}</h3>
       <a href="javascript:;">
-        <span>短信验证码登录</span>
+        <span @click="isPass = !isPass">{{
+          isPass ? '短信验证码登录' : '密码登录'
+        }}</span>
         <van-icon name="arrow"></van-icon>
       </a>
     </div>
@@ -21,11 +23,22 @@
         :rules="mobileRules"
       ></van-field>
       <van-field
+        v-if="isPass"
         placeholder="请输入密码"
         type="password"
         v-model="password"
         :rules="passwordRules"
       ></van-field>
+      <van-field
+        v-else
+        placeholder="短信验证码"
+        v-model="code"
+        :rules="codeRules"
+      >
+        <template #button>
+          <span class="btn-send">发送验证码</span>
+        </template>
+      </van-field>
       <div class="cp-cell">
         <van-checkbox v-model="agree">
           <span>我已同意</span>
@@ -55,7 +68,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { mobileRules, passwordRules } from '@/utils/rules'
+import { mobileRules, passwordRules, codeRules } from '@/utils/rules'
 import { showToast, showSuccessToast } from 'vant'
 import { loginByPassword } from '@/services/user'
 import { useUserStore } from '@/stores'
@@ -72,7 +85,7 @@ const onSubmit = async () => {
   // 手机号和密码验证成功后点击登录按钮触发
   // 在这里验证是否勾选了已经同意协议
   if (!agree.value) return showToast('请勾选协议')
-  // TODO 进行登录
+  //  进行登录
   const res = await loginByPassword(mobile.value, password.value)
   store.setUser(res.data) // 存储用户信息
   console.log('route.query.returnUrl', route.query.returnUrl)
@@ -80,6 +93,10 @@ const onSubmit = async () => {
   router.push((route.query.returnUrl as string) || '/user')
   showSuccessToast('登录成功')
 }
+
+// 短信登录界面切换
+const isPass = ref(true)
+const code = ref('')
 </script>
 
 <style lang="scss" scoped>
