@@ -150,3 +150,6 @@ Tabbar组件
 - 开启进度条 beforeEach
 - 结束进度条 afterEach
   
+个人中心
+- 用户信息类型
+- 
