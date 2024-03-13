@@ -14,14 +14,15 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 // 1.通过props实现标题和右侧文字的设置
-defineProps<{
+const props = defineProps<{
   title?: string
   rightText?: string
-}>()  // definePropsAPI是一个函数，它的返回值就是父亲传来的属性。
+  back?: () => void
+}>() // definePropsAPI是一个函数，它的返回值就是父亲传来的属性。
 
 // 2.使用emit函数来触发自定义事件（点击右侧文字按钮）
 const emit = defineEmits<{
-  (e:'click-right'):void
+  (e: 'click-right'): void
 }>()
 const onClickRight = () => {
   emit('click-right')
@@ -30,9 +31,10 @@ const onClickRight = () => {
 const router = useRouter()
 // 3.回退，监听箭头的点击事件按条件进行跳转
 const onClickLeft = () => {
-  if(history.state?.back){
+  if (props.back) return props.back()
+  if (history.state?.back) {
     router.back()
-  }else {
+  } else {
     router.push('/')
   }
 }
@@ -50,7 +52,4 @@ const onClickLeft = () => {
     }
   }
 }
-</style>import type { useRouter } from 'vue-router';
-import type { useRouter } from 'vue-router';
-import type { useRouter } from 'vue-router';
-
+</style>
