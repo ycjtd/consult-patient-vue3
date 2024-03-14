@@ -12,7 +12,7 @@ import type { Message, TimeMessages } from '@/types/room'
 import { ConsultOrderItem } from '../../types/consult'
 import { getConsultOrderDetail } from '@/services/consult'
 import { OrderType } from '@/enums'
-import { Toast } from 'vant'
+import { showToast } from 'vant'
 import dayjs from 'dayjs'
 
 const consult = ref<ConsultOrderItem>()
@@ -26,6 +26,7 @@ const route = useRoute()
 const list = ref<Message[]>([])
 const initialMsg = ref(true)
 let socket: Socket
+const time = ref(dayjs().format('YYYY-MM-DD HH:mm:ss'))
 onMounted(async () => {
   loadConsult()
   socket = io(baseURL, {
@@ -45,7 +46,7 @@ onMounted(async () => {
   socket.on('error', () => {
     console.log('发送错误')
   })
-  const time = ref(dayjs().format('YYYY-MM-DD HH:mm:ss'))
+
   // 获取聊天记录 如果是第一次(默认消息)
   socket.on('chatMsgList', ({ data }: { data: TimeMessages[] }) => {
     const arr: Message[] = []
@@ -64,7 +65,7 @@ onMounted(async () => {
 
     loading.value = false
     if (!data.length) {
-      return Toast('没有聊天记录了')
+      return showToast('没有聊天记录了')
     }
     nextTick(() => {
       if (initialMsg.value) {
