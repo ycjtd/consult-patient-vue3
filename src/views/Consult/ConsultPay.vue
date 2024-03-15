@@ -161,7 +161,7 @@ const pay = async () => {
       :loading="loading"
     />
     <!-- 支付抽屉,控制面板 -->
-    <van-action-sheet
+    <!-- <van-action-sheet
       v-model:show="show"
       title="选择支付方式"
       :close-on-popstate="false"
@@ -190,7 +190,13 @@ const pay = async () => {
           >
         </div>
       </div>
-    </van-action-sheet>
+    </van-action-sheet> -->
+    <cp-pay-sheet
+      v-model:show="show"
+      :order-id="orderId"
+      :actualPayment="payInfo.actualPayment"
+      :onClose="onClose"
+    />
   </div>
 </template>
 

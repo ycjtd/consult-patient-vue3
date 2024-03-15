@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import { Message } from '../../../types/room'
-import { flagOptions, timeOptions } from '@/services/constants'
 import { MsgType } from '@/enums'
 import { showImagePreview } from 'vant'
 import { useUserStore } from '@/stores'
-import { getPrescriptionPic } from '@/services/consult'
 import EvaluateCard from './EvaluateCard.vue'
+import { useShowPrescription } from '@/composables'
+import { getIllnessTimeText, getConsultFlagText } from '@/utils/filter.ts'
+
+const { onShowPrescription } = useShowPrescription()
 
 import dayjs from 'dayjs'
 
 defineProps<{ item: Message[] }>()
-
-const getIllnessTimeText = (time: IllnessTime) =>
-  timeOptions.find((item) => item.value === time)?.label
-
-const getConsultFlagText = (flag: 0 | 1) =>
-  flagOptions.find((item) => item.value === flag)?.label
 
 // 预览图片
 const previewImg = (pictures?: Image[]) => {
@@ -27,13 +23,6 @@ const store = useUserStore()
 
 // 时间格式转换
 const formatTime = (time: string) => dayjs(time).format('HH:mm')
-
-const showPrescription = async (id?: string) => {
-  if (id) {
-    const res = await getPrescriptionPic(id)
-    showImagePreview([res.data.url])
-  }
-}
 </script>
 
 <template>
@@ -131,7 +120,7 @@ const showPrescription = async (id?: string) => {
       <div class="head van-hairline--bottom">
         <div class="head-tit">
           <h3>电子处方</h3>
-          <p @click="showPrescription(item.msg.prescription?.id)">
+          <p @click="onShowPrescription(item.msg.prescription?.id)">
             原始处方 <van-icon name="arrow"></van-icon>
           </p>
         </div>
