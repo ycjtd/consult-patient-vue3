@@ -5,6 +5,7 @@ import { MsgType } from '@/enums'
 import { showImagePreview } from 'vant'
 import { useUserStore } from '@/stores'
 import { getPrescriptionPic } from '@/services/consult'
+import EvaluateCard from './EvaluateCard.vue'
 
 import dayjs from 'dayjs'
 
@@ -72,11 +73,14 @@ const showPrescription = async (id?: string) => {
     </div>
   </div>
   <!-- 通知-结束 -->
-  <!-- <div class="msg msg-tip msg-tip-cancel">
+  <div
+    class="msg msg-tip msg-tip-cancel"
+    v-if="item.msgType === MsgType.NotifyCancel"
+  >
     <div class="content">
-      <span>订单取消</span>
+      <span>{{ item.msg.content }}</span>
     </div>
-  </div> -->
+  </div>
   <!-- 发送文字 -->
   <div
     class="msg msg-to"
@@ -155,10 +159,25 @@ const showPrescription = async (id?: string) => {
       <div class="foot"><span>购买药品</span></div>
     </div>
   </div>
-  <!-- 评价卡片，后期实现 -->
+  <!-- 评价卡片 -->
+  <div
+    class="msg msg-comment"
+    v-if="
+      item.msgType === MsgType.CardEva || item.msgType === MsgType.CardEvaForm
+    "
+  >
+    <evaluate-card :evaluateDoc="item.msg.evaluateDoc" />
+  </div>
+  <div
+    class="msg msg-tip msg-tip-cancel"
+    v-if="item.msgType === MsgType.NotifyCancel"
+  >
+    <div class="content">
+      <span>{{ item.msg.content }}</span>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 @import '@/styles/room.scss';
 </style>
-import type { FormItem } from 'element-ui'
