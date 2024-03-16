@@ -196,6 +196,7 @@ const pay = async () => {
       :order-id="orderId"
       :actualPayment="payInfo.actualPayment"
       :onClose="onClose"
+      payCallback="/room"
     />
   </div>
 </template>
