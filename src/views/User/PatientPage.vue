@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PatientList, Patient } from '../../types/user'
+import type { PatientList, Patient } from '@/types/user'
 import { useRoute, useRouter } from 'vue-router'
 import {
   getPatientList,

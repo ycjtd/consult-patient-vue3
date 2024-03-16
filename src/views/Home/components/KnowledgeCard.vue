@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Knowledge } from '../../../types/consult'
+import type { Knowledge } from '@/types/consult'
 import { useFollow } from '@/composables'
 defineProps<{ item: Knowledge }>()
 

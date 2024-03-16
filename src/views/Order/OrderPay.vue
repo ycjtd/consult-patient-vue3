@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { OrderPre, AddressItem } from '../../types/order'
+import type { OrderPre, AddressItem } from '@/types/order'
 import {
   getMedicalOrderPre,
   getAddressList,

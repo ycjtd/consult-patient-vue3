@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
-import { TopDep } from '../../types/consult'
+import type { TopDep } from '@/types/consult'
 import { getAllDep } from '@/services/consult'
 import { useConsultStore } from '@/stores'
 

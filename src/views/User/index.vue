@@ -84,7 +84,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { UserInfo } from '@/types/user'
+import type { UserInfo } from '@/types/user'
 import { getUserInfo } from '@/services/user'
 import { showConfirmDialog } from 'vant'
 import { useUserStore } from '@/stores'

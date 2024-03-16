@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { uploadImage } from '@/services/consult'
 import { showLoadingToast } from 'vant'
-import { Image } from '../../../types/consult'
+import type { Image } from '@/types/consult'
 
 defineProps<{
   disabled: boolean

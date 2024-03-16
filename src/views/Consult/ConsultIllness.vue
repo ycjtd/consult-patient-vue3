@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { IllnessTime } from '@/enums'
 import { ref, computed, onMounted } from 'vue'
-import { ConsultIllness } from '../../types/consult'
+import type { ConsultIllness } from '@/types/consult'
 import type {
   UploaderAfterRead,
   UploaderFileListItem

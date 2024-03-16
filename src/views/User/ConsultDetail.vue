@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ConsultOrderItem } from '../../types/consult'
+import type { ConsultOrderItem } from '@/types/consult'
 import { ref, onMounted } from 'vue'
 import { getConsultOrderDetail } from '@/services/consult'
 import { useRoute, useRouter } from 'vue-router'

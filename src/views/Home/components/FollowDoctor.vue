@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DoctorCard from './DoctorCard.vue'
 import { useWindowSize } from '@vueuse/core'
-import { DoctorList } from '../../../types/consult'
+import type { DoctorList } from '@/types/consult'
 import { getDoctorPage } from '@/services/consult'
 import { onMounted, ref } from 'vue'
 const { width } = useWindowSize()

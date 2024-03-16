@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Message, Prescription } from '../../../types/room'
+import type { Message, Prescription } from '@/types/room'
 import { MsgType, PrescriptionStatus } from '@/enums'
 import { showImagePreview } from 'vant'
 import { useUserStore } from '@/stores'

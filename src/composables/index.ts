@@ -5,7 +5,6 @@ import { getPrescriptionPic } from '@/services/consult'
 import { showFailToast, showImagePreview, showSuccessToast } from 'vant'
 import { OrderType } from '@/enums'
 import type { OrderDetail } from '@/types/order'
-import { useRoute } from 'vue-router'
 import { getMedicalOrderDetail } from '@/services/order'
 
 export const useFollow = (type: FollowType = 'doc') => {

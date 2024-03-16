@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ConsultOrderItem } from '../../../types/consult'
+import type { ConsultOrderItem } from '@/types/consult'
 import { OrderType } from '@/enums'
 import ConsultMore from './ConsultMore.vue'
 import {
