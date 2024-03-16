@@ -117,7 +117,7 @@ const code = ref('')
 // 发送短信验证码
 const time = ref(0)
 const form = ref()
-let timer: number
+let timer: any
 const onSend = async () => {
   // 验证:倒计时 手机号
   if (time.value > 0) return

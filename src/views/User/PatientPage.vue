@@ -38,7 +38,7 @@ const options = [
 // 控制popup
 const show = ref(false)
 const showPopup = (item?: Patient) => {
-  if (item.name) {
+  if (item?.name) {
     // 编辑患者
     const { id, name, idCard, gender, defaultFlag } = item
     patient.value = { id, name, idCard, gender, defaultFlag }

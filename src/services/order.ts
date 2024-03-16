@@ -1,4 +1,9 @@
-import type { OrderPre, AddressItem } from '@/types/order'
+import type {
+  OrderPre,
+  AddressItem,
+  OrderDetail,
+  Logistics
+} from '@/types/order'
 import { request } from '@/utils/request'
 
 // 查询药品订单预支付信息
